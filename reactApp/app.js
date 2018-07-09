@@ -2,9 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 let dummyData = [
-  "Buy groceries",
-  "Call mom",
-  "Clean room"
+  {
+    taskText: "Be the best like no one ever was",
+    completed: false
+  },
+  {
+    taskText: "Catch 'em all",
+    completed: false
+  },
+  {
+    taskText: "Become Hokage",
+    completed: false
+  }
 ];
 
 //An individual todo item
@@ -12,14 +21,19 @@ class Todo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
     };
   };
+  handleCompletion(element) {
+    console.log(element)
+    var t = element.completed ?
+      <strike>element.taskText</strike> : element.taskText;
+    return t;
+  }
   render() {
     return(
       <li>
         <button type="button">X</button>
-        {this.props.task}
+        {this.handleCompletion(this.props.task)}
       </li>
     );
   };
@@ -30,7 +44,6 @@ class TodoList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
     };
   };
   render() {
@@ -47,12 +60,14 @@ class InputLine extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
     };
   };
   render() {
     return(
-      null
+      <div>
+        <input type="text" placeholder="task"></input>
+        <button type="button">Add todo</button>
+      </div>
     );
   };
 };
@@ -62,16 +77,18 @@ class TodoApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
     };
   };
   render() {
     return(
-      null
+      <div>
+        <InputLine />
+        <TodoList />
+      </div>
     );
   };
 };
 
 
-ReactDOM.render(<TodoList />,
+ReactDOM.render(<TodoApp />,
    document.getElementById('root'));
