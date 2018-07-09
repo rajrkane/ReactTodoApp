@@ -2,19 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 let dummyData = [
-  {
-    taskText: "Be the best like no one ever was",
-    completed: false
-  },
-  {
-    taskText: "Catch 'em all",
-    completed: false
-  },
-  {
-    taskText: "Become Hokage",
-    completed: false
-  }
-];
+    {
+      taskText: "Be the best like no one ever was",
+      completed: false
+    },
+    {
+      taskText: "Catch 'em all",
+      completed: false
+    },
+    {
+      taskText: "Become Hokage",
+      completed: false
+    }
+]
 
 //An individual todo item
 class Todo extends React.Component {
@@ -49,7 +49,7 @@ class TodoList extends React.Component {
   render() {
     return(
       <ul>
-        {dummyData.map((item) => <Todo task={item}/>)}
+        {this.props.todos.map((item) => <Todo task={item}/>)}
       </ul>
     );
   };
@@ -77,13 +77,17 @@ class TodoApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      todos: []
     };
+  };
+  componentDidMount() {
+    this.setState({todos: dummyData})
   };
   render() {
     return(
       <div>
         <InputLine />
-        <TodoList />
+        <TodoList todos={this.state.todos}/>
       </div>
     );
   };
