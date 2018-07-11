@@ -5,10 +5,6 @@ import TodoList from './TodoList';
 
 let dummyData = [
     {
-      taskText: "Be the best like no one ever was",
-      completed: false
-    },
-    {
       taskText: "Catch 'em all",
       completed: false
     },
@@ -26,13 +22,20 @@ class TodoApp extends React.Component {
       todos: []
     };
   };
+  addTodo(newTodo) {
+    dummyData.push({
+      taskText: newTodo,
+      completed: false
+    });
+    this.setState({todos: dummyData});
+  };
   componentDidMount() {
     this.setState({todos: dummyData})
   };
   render() {
     return(
       <div>
-        <InputLine />
+        <InputLine submit={() => this.addTodo("Test Task")}/>
         <TodoList todos={this.state.todos}/>
       </div>
     );

@@ -12,7 +12,7 @@ class InputLine extends React.Component {
     return(
       <div>
         <input type="text" placeholder="task"></input>
-        <button type="button">Add todo</button>
+        <button onClick={() => this.props.submit()} type="button">Add todo</button>
       </div>
     );
   };
