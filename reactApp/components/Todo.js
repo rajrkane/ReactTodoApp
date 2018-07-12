@@ -11,7 +11,7 @@ class Todo extends React.Component {
   handleCompletion(element) {
     console.log(element)
     var t = element.completed ?
-      <strike>element.taskText</strike> : element.taskText;
+      <strike>{element.taskText}</strike> : element.taskText;
     return t;
   }
   render() {
