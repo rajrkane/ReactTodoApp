@@ -6,13 +6,25 @@ class InputLine extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      typedText: ''
     };
+  };
+  handleTyping(event) {
+    this.setState({
+      typedText: event.target.value
+    });
+  };
+  handleSubmit() {
+    this.props.submit(this.state.typedText);
+    this.setState({
+      typedText: ''
+    });
   };
   render() {
     return(
       <div>
-        <input type="text" placeholder="task"></input>
-        <button onClick={() => this.props.submit()} type="button">Add todo</button>
+        <input onChange={(e) => this.handleTyping(e)} value={this.state.typedText} type="text" placeholder="task" />
+        <button onClick={() => this.handleSubmit()/*() => this.props.submit()*/} type="button">Add todo</button>
       </div>
     );
   };
