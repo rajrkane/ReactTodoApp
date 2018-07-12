@@ -17,7 +17,7 @@ class Todo extends React.Component {
   render() {
     return(
       <li>
-        <button type="button">X</button>
+        <button onClick={() => this.props.xClick()} type="button">X</button>
         {this.handleCompletion(this.props.task)}
       </li>
     );
