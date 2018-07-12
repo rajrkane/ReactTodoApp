@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Button} from 'semantic-ui-react';
 
 //An individual todo item
 class Todo extends React.Component {
@@ -16,10 +17,10 @@ class Todo extends React.Component {
   }
   render() {
     return(
-      <li>
-        <button onClick={() => this.props.xClick()} type="button">X</button>
+      <p>
+        <Button size="mini" onClick={() => this.props.xClick()}>X</Button>
         {this.handleCompletion(this.props.task)}
-      </li>
+      </p>
     );
   };
 };

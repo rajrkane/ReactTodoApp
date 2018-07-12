@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Button, Input} from 'semantic-ui-react';
 
 //A row at the top with an input field and submit button
 class InputLine extends React.Component {
@@ -15,17 +16,19 @@ class InputLine extends React.Component {
     });
   };
   handleSubmit() {
-    this.props.submit(this.state.typedText);
-    this.setState({
-      typedText: ''
-    });
+    if (this.state.typedText.trim() !== '') {
+      this.props.submit(this.state.typedText);
+      this.setState({
+        typedText: ''
+      });
+    };
   };
   render() {
     return(
-      <div>
-        <input onChange={(e) => this.handleTyping(e)} value={this.state.typedText} type="text" placeholder="task" />
-        <button onClick={() => this.handleSubmit()/*() => this.props.submit()*/} type="button">Add todo</button>
-      </div>
+      <p class="ui center aligned segment">
+        <Input onChange={(e) => this.handleTyping(e)} value={this.state.typedText} type="text" placeholder="task" />
+        <Button onClick={() => this.handleSubmit()/*() => this.props.submit()*/} type="button">Add todo</Button>
+      </p>
     );
   };
 };
